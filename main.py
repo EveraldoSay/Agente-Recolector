@@ -1,19 +1,21 @@
-from entorno.entorno import Entorno  # IMPORTAMOS CLASE Entorno PARA CREAR ENTORNO
-from agente.agente import Agente    # IMPORTAMOS CLASE Agente PARA CREAR EL AGENTE
-from visualizacion.visualizacion import Visualizacion  # IMPORTAMOS CLASE Visualizacion PARA MOSTRAR EL GAME
+import random  # IMPORTAR EL MÓDULO RANDOM PARA GENERAR NUM ALEATORIOS DE BASURA
+from entorno.entorno import Entorno
+from agente.agente import Agente
+from visualizacion.visualizacion import Visualizacion
 
 def main():
-    # CREAMOS ENTORNO
-    entorno = Entorno(grid_size=10, num_objects=5, num_obstacles=10)
+    # Crear el entorno con un número aleatorio de objetos (entre 1 y  max 6)
+    num_objects = random.randint(1, 6)  # NÚMERO ALEATORIO DE OBJETOS
+    entorno = Entorno(grid_size=10, num_objects=num_objects, num_obstacles=10)
     
-    # CREAR AGENTE 
+    # CREAMOS el agente
     agente = Agente(entorno)
     
-    # CREAMOS INTERFAZ PARA VISUALIZACION
+    # CREAMOS la visualización
     visualizacion = Visualizacion(entorno, agente)
     
-    # INICIAMOS BUCLE
+    # BUCLE principal del juego
     visualizacion.run()
 
 if __name__ == "__main__":
-    main()  # EJECUTAMOS FUNCION main() 
+    main()  # EJECUTAMOS FUNCION main()
